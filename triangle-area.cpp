@@ -7,19 +7,21 @@ void triangle(double, double, double, double*, double*);
 
 int main() {
 	double s1, s2, s3, p, a;
-	getSides(&s1, &s2, &s3); 
-	if (s1 <= 0 || s2 <= 0 || s3 <= 0) { return -1; }
-	triangle(s1, s2, s3, &p, &a);	
-	
-	// area must be positive and a number
-	if (isnan(a) || a <= 0) 
-	{
-		cout << s1 << "," << s2 << "," << s3 <<": not a triangle" << endl;
-		return 0; 
-	}
+	while (true) {
+		getSides(&s1, &s2, &s3); 
+		if (s1 <= 0 || s2 <= 0 || s3 <= 0) { return -1; }
+		triangle(s1, s2, s3, &p, &a);	
+		
+		// area must be positive and a number
+		if (isnan(a) || a <= 0) 
+		{
+			cout << s1 << "," << s2 << "," << s3 <<": not a triangle" << endl;
+			continue; 
+		}
 
-	// output perimeter + area for valid triangle
+		// output perimeter + area for valid triangle
 	cout << s1 << "," << s2 << "," << s3 << ": perimeter=" << p << " area=" << a << endl;
+	}
 	return 0;
 }
 
